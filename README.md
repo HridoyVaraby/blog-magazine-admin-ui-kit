@@ -81,35 +81,40 @@ pnpm add @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-
 pnpm add -D @tailwindcss/typography
 ```
 
-### Step 2: Clone the Kit
+### Step 2: Add to .gitignore (Safety)
 ```bash
-git clone https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git tmp/admin-ui-kit
+echo ".temp-admin-kit" >> .gitignore
 ```
 
-### Step 3: Copy Files
+### Step 3: Clone the Kit
+```bash
+git clone --depth 1 https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git .temp-admin-kit
+```
+
+### Step 4: Copy Files
 ```bash
 # Copy admin routes
-cp -r tmp/admin-ui-kit/app/admin ./app/admin
+cp -r .temp-admin-kit/app/admin ./app/admin
 
 # Copy auth API route
 mkdir -p ./app/api/auth
-cp -r tmp/admin-ui-kit/app/api/auth/\[...nextauth\] ./app/api/auth/
+cp -r .temp-admin-kit/app/api/auth/\[...nextauth\] ./app/api/auth/
 
 # Copy UI components (merge if exists)
-cp -r tmp/admin-ui-kit/components/ui ./components/
-cp -r tmp/admin-ui-kit/components/admin ./components/
+cp -r .temp-admin-kit/components/ui ./components/
+cp -r .temp-admin-kit/components/admin ./components/
 
 # Copy providers
-cp tmp/admin-ui-kit/components/providers.tsx ./components/
+cp .temp-admin-kit/components/providers.tsx ./components/
 
 # Copy hooks
-cp -r tmp/admin-ui-kit/hooks ./
+cp -r .temp-admin-kit/hooks ./
 
 # Copy auth config
-cp tmp/admin-ui-kit/auth.ts ./
+cp .temp-admin-kit/auth.ts ./
 ```
 
-### Step 4: Merge globals.css
+### Step 5: Merge globals.css
 Add these CSS variables to your `app/globals.css`:
 ```css
 :root {
@@ -136,7 +141,7 @@ Add these CSS variables to your `app/globals.css`:
 }
 ```
 
-### Step 5: Update tailwind.config.ts
+### Step 6: Update tailwind.config.ts
 Add to your content array:
 ```ts
 content: [
@@ -148,7 +153,7 @@ content: [
 
 Add the extended theme colors for shadcn/ui theming.
 
-### Step 6: Wrap App with Providers
+### Step 7: Wrap App with Providers
 Update your root `layout.tsx` to wrap children with `<Providers>`:
 ```tsx
 import { Providers } from "@/components/providers";
@@ -164,13 +169,13 @@ export default function RootLayout({ children }) {
 }
 ```
 
-### Step 7: Set Environment Variables
+### Step 8: Set Environment Variables
 Create `.env`:
 ```
 AUTH_SECRET="generate-with-npx-auth-secret"
 ```
 
-### Step 8: Configure lib/utils.ts
+### Step 9: Configure lib/utils.ts
 Ensure you have the `cn()` helper:
 ```ts
 import { clsx, type ClassValue } from "clsx"
@@ -179,6 +184,12 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+```
+
+### Step 10: Cleanup
+Once you've verified the admin dashboard works, remove the temp folder:
+```bash
+rm -rf .temp-admin-kit
 ```
 
 ### Done!
