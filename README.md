@@ -1,8 +1,12 @@
 # Admin UI Kit
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit)
+
 A **standalone Admin Dashboard UI Kit** for Next.js projects. Built with React 19, Tailwind CSS, and shadcn/ui components.
 
 > 🤖 **AI-First Documentation** — This README is optimized for AI coding assistants (Cursor, Windsurf, Cline, etc.)
+
+**Repository:** https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git
 
 ---
 
@@ -46,10 +50,13 @@ pnpm add -D @tailwindcss/typography autoprefixer postcss tailwindcss
 ````markdown
 ## Task: Integrate Admin UI Kit
 
-I want to integrate the Admin UI Kit into this Next.js project.
+I want to integrate the Admin UI Kit from https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git into this Next.js project.
 
 ### Step 1: Install Dependencies
+> ⚠️ **Skip any packages that are already installed in your project.**
+
 ```bash
+# Check package.json first, then only install missing packages
 pnpm add @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-slot @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip @tanstack/react-query class-variance-authority clsx cmdk date-fns lucide-react next-auth@beta tailwind-merge zod
 
 pnpm add -D @tailwindcss/typography
@@ -57,7 +64,7 @@ pnpm add -D @tailwindcss/typography
 
 ### Step 2: Clone the Kit
 ```bash
-git clone <REPO_URL> /tmp/admin-ui-kit
+git clone https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git /tmp/admin-ui-kit
 ```
 
 ### Step 3: Copy Files
