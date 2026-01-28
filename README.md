@@ -114,31 +114,10 @@ cp -r .temp-admin-kit/hooks ./
 cp .temp-admin-kit/auth.ts ./
 ```
 
-### Step 5: Merge globals.css
-Add these CSS variables to your `app/globals.css`:
-```css
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
-}
+### Step 5: Import Theme
+Add this line to your root `layout.tsx` (or `app/admin/layout.tsx`):
+```tsx
+import "@/components/admin/admin-theme.css";
 ```
 
 ### Step 6: Update tailwind.config.ts
@@ -157,6 +136,7 @@ Add the extended theme colors for shadcn/ui theming.
 Update your root `layout.tsx` to wrap children with `<Providers>`:
 ```tsx
 import { Providers } from "@/components/providers";
+import "@/components/admin/admin-theme.css";
 
 export default function RootLayout({ children }) {
   return (
@@ -169,13 +149,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-### Step 8: Set Environment Variables
-Create `.env`:
-```
-AUTH_SECRET="generate-with-npx-auth-secret"
-```
-
-### Step 9: Configure lib/utils.ts
+### Step 8: Configure lib/utils.ts
 Ensure you have the `cn()` helper:
 ```ts
 import { clsx, type ClassValue } from "clsx"
@@ -186,7 +160,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-### Step 10: Cleanup
+### Step 9: Cleanup
 Once you've verified the admin dashboard works, remove the temp folder:
 ```bash
 rm -rf .temp-admin-kit

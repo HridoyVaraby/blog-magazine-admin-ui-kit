@@ -6,6 +6,7 @@ import path from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
 import prompts from 'prompts';
+import crypto from 'crypto';
 
 const REPO_URL = 'https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git';
 const TEMP_DIR = '.temp-admin-kit';
@@ -143,21 +144,48 @@ async function main() {
         console.log(chalk.dim(`   ${error.message}`));
     }
 
-    // Step 6: Cleanup
+    // Step 6: Configure .env with AUTH_SECRET
+    const envSpinner = ora('Configuring environment...').start();
+    try {
+        const envPath = path.join(process.cwd(), '.env');
+        const authSecret = crypto.randomBytes(32).toString('hex');
+
+        if (fs.existsSync(envPath)) {
+            // .env exists - check if AUTH_SECRET is already defined
+            const envContent = fs.readFileSync(envPath, 'utf-8');
+            if (!envContent.includes('AUTH_SECRET')) {
+                // Append AUTH_SECRET to existing .env
+                fs.appendFileSync(envPath, `\nAUTH_SECRET="${authSecret}"\n`);
+                envSpinner.succeed('.env configured safely with AUTH_SECRET');
+            } else {
+                envSpinner.succeed('.env already has AUTH_SECRET (skipped)');
+            }
+        } else {
+            // Create new .env file
+            fs.writeFileSync(envPath, `AUTH_SECRET="${authSecret}"\n`);
+            envSpinner.succeed('.env created with AUTH_SECRET');
+        }
+    } catch (error) {
+        envSpinner.fail('Could not configure .env');
+        console.log(chalk.yellow('   You may need to set AUTH_SECRET manually.'));
+        console.log(chalk.dim(`   ${error.message}`));
+    }
+
+    // Step 7: Cleanup
     cleanup();
 
-    // Step 7: Success message
+    // Step 8: Success message
     console.log('\n');
     console.log(chalk.bold.green('✅ Admin UI Kit installed successfully!'));
     console.log('\n');
     console.log(chalk.yellow('👉 ACTION REQUIRED:'));
-    console.log(chalk.white('   1. Add CSS variables from the kit to your globals.css'));
+    console.log(chalk.white('   1. Import the theme in your layout:'));
+    console.log(chalk.cyan("      import '@/components/admin/admin-theme.css';"));
     console.log(chalk.white('   2. Update tailwind.config.ts to include:'));
     console.log(chalk.dim("      - './app/admin/**/*.{ts,tsx}'"));
     console.log(chalk.dim("      - './components/admin/**/*.{ts,tsx}'"));
     console.log(chalk.dim("      - './components/ui/**/*.{ts,tsx}'"));
     console.log(chalk.white('   3. Wrap your app with <Providers> in layout.tsx'));
-    console.log(chalk.white('   4. Set AUTH_SECRET in .env (run: npx auth secret)'));
     console.log('\n');
     console.log(chalk.cyan('🚀 Navigate to /admin to see your dashboard!'));
     console.log('\n');
