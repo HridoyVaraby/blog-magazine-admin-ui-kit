@@ -1,12 +1,31 @@
 # Admin UI Kit
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit)
+[![npm](https://img.shields.io/npm/v/blog-magazine-admin-ui-kit)](https://www.npmjs.com/package/blog-magazine-admin-ui-kit)
 
 A **standalone Admin Dashboard UI Kit** for Next.js projects. Built with React 19, Tailwind CSS, and shadcn/ui components.
 
 > 🤖 **AI-First Documentation** — This README is optimized for AI coding assistants (Cursor, Windsurf, Cline, etc.)
 
-**Repository:** https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git
+**Repository:** https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git  
+**npm:** https://www.npmjs.com/package/blog-magazine-admin-ui-kit
+
+---
+
+## ⚡ Quick Install (CLI)
+
+The easiest way to install the Admin UI Kit into your existing Next.js project:
+
+```bash
+npx blog-magazine-admin-ui-kit
+```
+
+This will:
+- Clone the kit to a temp folder
+- Copy admin routes, components, hooks, and utilities
+- Auto-detect your package manager (pnpm/npm/yarn/bun)
+- Install all required dependencies
+- Clean up temp files
 
 ---
 
