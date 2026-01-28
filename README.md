@@ -89,24 +89,24 @@ git clone https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git tmp/adm
 ### Step 3: Copy Files
 ```bash
 # Copy admin routes
-cp -r /tmp/admin-ui-kit/app/admin ./app/admin
+cp -r tmp/admin-ui-kit/app/admin ./app/admin
 
 # Copy auth API route
 mkdir -p ./app/api/auth
-cp -r /tmp/admin-ui-kit/app/api/auth/\[...nextauth\] ./app/api/auth/
+cp -r tmp/admin-ui-kit/app/api/auth/\[...nextauth\] ./app/api/auth/
 
 # Copy UI components (merge if exists)
-cp -r /tmp/admin-ui-kit/components/ui ./components/
-cp -r /tmp/admin-ui-kit/components/admin ./components/
+cp -r tmp/admin-ui-kit/components/ui ./components/
+cp -r tmp/admin-ui-kit/components/admin ./components/
 
 # Copy providers
-cp /tmp/admin-ui-kit/components/providers.tsx ./components/
+cp tmp/admin-ui-kit/components/providers.tsx ./components/
 
 # Copy hooks
-cp -r /tmp/admin-ui-kit/hooks ./
+cp -r tmp/admin-ui-kit/hooks ./
 
 # Copy auth config
-cp /tmp/admin-ui-kit/auth.ts ./
+cp tmp/admin-ui-kit/auth.ts ./
 ```
 
 ### Step 4: Merge globals.css
