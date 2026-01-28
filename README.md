@@ -83,7 +83,7 @@ pnpm add -D @tailwindcss/typography
 
 ### Step 2: Clone the Kit
 ```bash
-git clone https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git /tmp/admin-ui-kit
+git clone https://github.com/HridoyVaraby/blog-magazine-admin-ui-kit.git tmp/admin-ui-kit
 ```
 
 ### Step 3: Copy Files
